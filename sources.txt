@@ -1,0 +1,13 @@
+C:\D\itb\stima\tucil3\src\Program.java
+C:\D\itb\stima\tucil3\src\Commands\Command.java
+C:\D\itb\stima\tucil3\src\Commands\DownCommand.java
+C:\D\itb\stima\tucil3\src\Commands\LeftCommand.java
+C:\D\itb\stima\tucil3\src\Commands\RightCommand.java
+C:\D\itb\stima\tucil3\src\Commands\UpCommand.java
+C:\D\itb\stima\tucil3\src\IO\IOManagement.java
+C:\D\itb\stima\tucil3\src\Puzzle\BnBPuzzle.java
+C:\D\itb\stima\tucil3\src\Puzzle\DifferenceTheorem.java
+C:\D\itb\stima\tucil3\src\Puzzle\Puzzle.java
+C:\D\itb\stima\tucil3\src\Queue\BnBQueue.java
+C:\D\itb\stima\tucil3\src\Tree\StateTreeNode.java
+C:\D\itb\stima\tucil3\src\Tree\TreeNode.java

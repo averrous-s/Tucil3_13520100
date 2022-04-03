@@ -10,6 +10,6 @@ public abstract class TreeNode <T>{
         this.childs = new ArrayList<TreeNode<T>>();
     }
 
-    public abstract <U extends T> void expand();
+    public abstract <U extends T> int expand();
     
 }

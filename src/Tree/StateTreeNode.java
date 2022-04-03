@@ -75,17 +75,21 @@ public class StateTreeNode<T> extends TreeNode<T> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void expand() {
+    public int expand() {
         if (val instanceof Puzzle) {
+            int n = 0;
             childs.clear();
             for (int i = 0; i < commands.size(); i++) {
                 if (commands.get(i).isAllowed((Puzzle) val) && !commands.get(i).opposite().equals(commandCreator)) {
                     childs.add((StateTreeNode<T>) new StateTreeNode<Puzzle>(
                             StateTreeNode.<Puzzle>runCommand(commands.get(i), (Puzzle) val), pathCount + 1,
                             commands.get(i).toString(), commandCreators));
+                    n++;
                 }
             }
+            return n;
         }
+        return 0;
     }
 
 }

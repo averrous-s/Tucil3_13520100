@@ -42,6 +42,7 @@ public class BnBPuzzle {
     public void run() {
         StateTreeNode<Puzzle> access;
         StateTreeNode<Puzzle> initialState = new StateTreeNode<Puzzle>(problem, 0, "", new ArrayList<>());
+        int generatedState = 1;
         queue = new BnBQueue<>();
         System.out.println();
         printInitialStatus(initialState);
@@ -58,9 +59,10 @@ public class BnBPuzzle {
                     long end = System.nanoTime();
                     access.printPath(initialState.val);
                     long elapsedTime = end - start;
-                    System.out.println("ELAPSED TIME: " + elapsedTime +" nanoseconds");
+                    System.out.println("ELAPSED TIME: " + elapsedTime +" Nanoseconds");
+                    System.out.println("GENERATED STATE: " + generatedState +" States");
                 } else {
-                    access.expand();
+                    generatedState += access.expand();
                     enqueueAllChild(access);
                 }
             }
