@@ -49,12 +49,11 @@ public class IOManagement {
             } else {
                 tmp += t;
             }
-
-            if (i == l.length() - 1 && tmp.strip().length() != 0) {
-                val[eff] = (Integer.parseInt(tmp.strip()));
-            } else if (i == l.length() - 1 && tmp.equals(" ")) {
+            if (i == l.length() - 1 && (tmp.equals(" ") || tmp.equals("?"))) {
                 val[eff] = 16;
-            }
+            } else if (i == l.length() - 1 && tmp.strip().length() != 0) {
+                val[eff] = (Integer.parseInt(tmp.strip()));
+            } 
             i++;
         }
 

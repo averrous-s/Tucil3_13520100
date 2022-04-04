@@ -1,16 +1,17 @@
 package Queue;
 
 import java.util.ArrayList;
-
+import Puzzle.Puzzle;
 import Tree.StateTreeNode;
 
-public class BnBQueue<T> extends ArrayList<StateTreeNode<T>> {
+public class BnBQueue extends ArrayList<StateTreeNode<Puzzle>> {
     public BnBQueue(){
 
     }
-    public void enqueue(StateTreeNode<T> elmt){
+    public void enqueue(StateTreeNode<Puzzle> elmt){
         int i = 0;
-        while (i < size() && get(i).cost() <= elmt.cost()) {
+        int c = elmt.cost();
+        while (i < size() && get(i).cost() <= c) {
             i++;
         }
         if (i == size()){
@@ -20,7 +21,7 @@ public class BnBQueue<T> extends ArrayList<StateTreeNode<T>> {
         }
     }
 
-    public StateTreeNode<T> dequeue(){
+    public StateTreeNode<Puzzle> dequeue(){
         return remove(0);
     }
 }

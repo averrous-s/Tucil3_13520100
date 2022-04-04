@@ -83,6 +83,17 @@ public class Puzzle  {
         return new int[]{row, col};
     }
 
+    public static int distanceFromCorrectPosition(int num, int[] pos) {
+        return Math.abs((pos[0]*4 + pos[1] + 1) - num);
+    }
+
+    public static int shortestDistanceFromCorrectPosition(int num, int[] pos) {
+        int[] a = correctPositionOf(num);
+        int difX = Math.abs(pos[0] - a[0]);
+        int difY = Math.abs(pos[1] - a[1]);
+        return (difX+difY);
+    }
+
     private static boolean isArrEqual(int[] a, int[] b){
         if (a.length == b.length){
             int i = 0;

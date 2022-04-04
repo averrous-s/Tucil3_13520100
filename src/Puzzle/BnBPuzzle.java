@@ -7,7 +7,7 @@ import Queue.BnBQueue;
 import Tree.StateTreeNode;
 
 public class BnBPuzzle {
-    private BnBQueue<Puzzle> queue;
+    private BnBQueue queue;
     public Puzzle problem;
 
     public BnBPuzzle(int[][] p) {
@@ -43,7 +43,7 @@ public class BnBPuzzle {
         StateTreeNode<Puzzle> access;
         StateTreeNode<Puzzle> initialState = new StateTreeNode<Puzzle>(problem, 0, "", new ArrayList<>());
         int generatedState = 1;
-        queue = new BnBQueue<>();
+        queue = new BnBQueue();
         System.out.println();
         printInitialStatus(initialState);
         // some time passes

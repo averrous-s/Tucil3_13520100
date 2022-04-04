@@ -36,7 +36,7 @@ public class StateTreeNode<T> extends TreeNode<T> {
     public int cost() {
         if (val instanceof Puzzle) {
             Puzzle a = (Puzzle) val;
-            return pathCount + g(a.getContent());
+            return  g(a.getContent()) + pathCount ;
         } else {
             return 0;
         }
@@ -45,8 +45,9 @@ public class StateTreeNode<T> extends TreeNode<T> {
     private int g(int[][] p) {
         int count = 0;
         for (int i = 0; i < p.length; i++) {
-            if (!Puzzle.isCorrectPosition(i + 1, p[i]) && (i + 1) != 16) {
-                count++;
+            count += Puzzle.shortestDistanceFromCorrectPosition(i+1, p[i]);
+            if (!Puzzle.isCorrectPosition(i + 1, p[i]) && (i+1) != p.length) {
+                count += 3;
             }
         }
         return count;
@@ -59,11 +60,11 @@ public class StateTreeNode<T> extends TreeNode<T> {
             boolean found = false;
             while (j < commands.size() && !found) {
                 if (commands.get(j).toString().equals(commandCreators.get(i))) {
-                    Puzzle next = StateTreeNode.<Puzzle>runCommand(commands.get(j), (Puzzle) initial);
-                    initial = next;
+                    Puzzle next = StateTreeNode.runCommand(commands.get(j), initial);
                     System.out.println("COMMAND: " + commands.get(j).toString());
                     System.out.println();
                     next.print();
+                    initial = next;
                     found = true;
                 }
                 j++;
@@ -78,11 +79,12 @@ public class StateTreeNode<T> extends TreeNode<T> {
     public int expand() {
         if (val instanceof Puzzle) {
             int n = 0;
+            Puzzle t = (Puzzle) val;
             childs.clear();
             for (int i = 0; i < commands.size(); i++) {
-                if (commands.get(i).isAllowed((Puzzle) val) && !commands.get(i).opposite().equals(commandCreator)) {
+                if (commands.get(i).isAllowed(t) && !commands.get(i).opposite().equals(commandCreator)) {
                     childs.add((StateTreeNode<T>) new StateTreeNode<Puzzle>(
-                            StateTreeNode.<Puzzle>runCommand(commands.get(i), (Puzzle) val), pathCount + 1,
+                            StateTreeNode.runCommand(commands.get(i), t), pathCount + 1,
                             commands.get(i).toString(), commandCreators));
                     n++;
                 }
